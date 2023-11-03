@@ -82,7 +82,9 @@
             "required": true,
             "type": "string",
             "x-ms-visibility": "important",
-            "description": "Message for encrypt"
+            "description": "Message for encrypt/hash, Message for encrypt/hash, input will not be modified so the
+            resulting hash will not contain url-encoded characters (such as
+            "%3A" for ":")"
           },
           {
             "name": "hashtype",
