@@ -74,14 +74,15 @@ public class Script : ScriptBase
 		return Script.StrAppend(result);
 	}
 	/// <summary>
-	/// Sha256 hash algorithm
+	/// Sha256 hash algorithm, modified to be url decoded
 	/// </summary>
 	/// <param name="text">the message you want to encrypt</param>
 	/// <returns>sha256 hash</returns>
 	public static string SHA256Hash(string text)
 	{
 		var shaM = new SHA256Managed();
-		shaM.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+        	string decodedUrl = HttpUtility.UrlDecode(text);
+		shaM.ComputeHash(ASCIIEncoding.ASCII.GetBytes(decodedUrl));
 		byte[] result = shaM.Hash;
 
 		return Script.StrAppend(result);
