@@ -102,14 +102,15 @@ public class Script : ScriptBase
 	}
 
 	/// <summary>
-	/// MD5 hash algorithm
+	/// MD5 hash algorithm, modified to be url decoded
 	/// </summary>
 	/// <param name="text">the message you want to encrypt</param>
 	/// <returns>MD5 hash</returns>
 	public static string MD5Hash(string text)
 	{
 		MD5 md5 = new MD5CryptoServiceProvider();
-		md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+        	string decodedUrl = HttpUtility.UrlDecode(text);
+		md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(decodedUrl));
 		byte[] result = md5.Hash;
 
 		return Script.StrAppend(result);
